@@ -1,0 +1,86 @@
+code:
+install.packages("rmarkdown")
+install.packages("bookdown")
+# Check error messages for needed cran packsges. Development packages are
+# mentioned below.
+install.packages("dplyr")
+install.packages("devtools")
+devtools::install_github("hadley/sloop")
+devtools::install_github("hadley/emo")
+bookdown::render_book("index.Rmd",output_format = "bookdown::pdf_book")
+
+Q1:I can't clone adv file.
+R:git config --global http.postBuffer524288000
+git config  --globle   http.sslVerify "false”
+git clone https://github.com/hadley/adv-r.git
+
+Q2:the following error occurs
+devtools::install_github("hadley/sloop")
+错误: Failed to install 'sloop' from GitHub:
+  schannel: failed to receive handshake, SSL/TLS connection failed
+R: open git-bash,enter the following.
+git config --global http.sslBackend "openssl"
+git config --global http.sslCAInfo F:/R-3.6.3/library/openssl/cacert.pem
+
+Q3:There are some problem with the lack of packages.
+eg:Quitting from lines 535-550 (R6.Rmd) 
+Error in loadNamespace(name) : 不存在叫'RSQLite'这个名字的程辑包
+Calls: local ... loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart
+停止执行
+Cleaning up C:\Users\ADMINI~1\AppData\Local\Temp\RtmpgN67lB\filead8466b4a75
+Error in Rscript_render(f, render_args, render_meta, add1, add2) : 
+  Failed to compile R6.Rmd
+R:I soved them by downloading the corresponding packsges.
+
+Q4:The same question - lack packages
+Quitting from lines 233-234 (Perf-measure.Rmd) 
+错误: `ggbeeswarm` must be installed to use `type = "beeswarm"` option.
+停止执行
+Error in Rscript_render(f, render_args, render_meta, add1, add2) : 
+  Failed to compile Perf-measure.Rmd
+R:installing ggbeeswarm packages.
+
+Q5:The R system can't find rtools.
+Quitting from lines 77-84 (Rcpp.Rmd) 
+Error in sourceCpp(code = code, env = env, rebuild = rebuild, cacheDir = cacheDir,  : 
+  Error 1 occurred building shared library.
+Calls: local ... withVisible -> eval -> eval -> cppFunction -> sourceCpp
+停止执行
+Error in Rscript_render(f, render_args, render_meta, add1, add2) : 
+  Failed to compile Rcpp.Rmd
+R:I install rtools,and restart open Rstudio.
+
+Q6:Error is as follow.
+LaTeX Error: File `unicode-math.sty' not found.
+! Emergency stop.
+<read *> 
+! Qt: Untested Windows version 6.2 detected!
+! xelatex.exe: No Data
+! xelatex.exe: Data: get host by name failed in tcp_connect()
+错误: LaTeX failed to compile _main.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See _main.log for more info.
+R:Install MiKTeX.
+
+Q7:Lack Inconsolata font.
+! Package fontspec Error: The font "Inconsolata" cannot be found.
+! xelatex: security risk: running with elevated privileges
+! miktex-maketfm: security risk: running with elevated privileges
+! miktex-makemf: security risk: running with elevated privileges
+! miktex-maketfm: security risk: running with elevated privileges
+! miktex-makemf: security risk: running with elevated privileges
+! miktex-makemf: security risk: running with elevated privileges
+! Sorry, but miktex-makemf did not succeed.
+! The log file hopefully contains the information to get MiKTeX going again:
+!   C:\Users\Administrator\AppData\Local\MiKTeX\2.9\miktex\log\miktex-makemf.log
+! miktex-hbf2gf: security risk: running with elevated privileges
+! Couldn't open `Inconsola.cfg'
+! miktex-hbf2gf: security risk: running with elevated privileges
+! Couldn't open `Inconsola.cfg'
+! Couldn't open `Inconsola.cfg'
+! hbf2gf (CJK ver. 4.8.4)
+! Sorry, but miktex-maketfm did not succeed.
+! The log file hopefully contains the information to get MiKTeX going again:
+!   C:\Users\Administrator\AppData\Local\MiKTeX\2.9\miktex\log\miktex-maketfm.log
+错误: LaTeX failed to compile _main.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See _main.log for more info.
+R:install Inconsolata.But this question can't resolve.
+
+the
